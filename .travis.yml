@@ -121,6 +121,22 @@ matrix:
   - os: osx
     env: BUILD_TYPE=bindings BINDING=jni
   include:
+  - env: BUILD_TYPE=cmake DO_CLANG_FORMAT_CHECK=1 CLANG_FORMAT=clang-format-5.0
+# For non-cmake users, there is an autotools solution with a bit more overhead
+# to have dependencies ready and pass configure script before making this check).
+# Note that the autotools variant will also require dependencies preinstalled to
+# pass its configure script:
+#  - env: BUILD_TYPE=clang-format-check CLANG_FORMAT=clang-format-5.0
+    os: linux
+    dist: trusty
+    addons:
+      apt:
+        sources:
+        - llvm-toolchain-trusty-5.0
+        packages:
+        - clang-5.0
+        - clang-format-5.0
+#autotools#        - *pkg_deps_prereqs
   - env: BUILD_TYPE=default-with-docs
     os: linux
     addons:
@@ -160,22 +176,6 @@ matrix:
         sources: *pkg_src_zeromq_ubuntu14
         packages:
         - *pkg_deps_common
-  - env: BUILD_TYPE=cmake DO_CLANG_FORMAT_CHECK=1 CLANG_FORMAT=clang-format-5.0
-# For non-cmake users, there is an autotools solution with a bit more overhead
-# to have dependencies ready and pass configure script before making this check).
-# Note that the autotools variant will also require dependencies preinstalled to
-# pass its configure script:
-#  - env: BUILD_TYPE=clang-format-check CLANG_FORMAT=clang-format-5.0
-    os: linux
-    dist: trusty
-    addons:
-      apt:
-        sources:
-        - llvm-toolchain-trusty-5.0
-        packages:
-        - clang-5.0
-        - clang-format-5.0
-#autotools#        - *pkg_deps_prereqs
 
 ### Customization note: python binding
 before_install:
