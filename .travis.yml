@@ -63,10 +63,10 @@ env:
     - secure: dmmMz3OyX9xZF/IoSYJnyZS37KVx5xdL9qkAj8nH10n9w9T+y86WcQx/vYFOEGTufzCV+eAgHRV7hvJyYyA6MdrhrEvytVgYfZTcdYhVOGJxeANxAUCtp1TTY3EEgamGFYSUMMN6U2mowg7qNHzBkAu61bYF+DjcvUTPhoSasJs=
   ### Customization note: build/test options
   matrix:
-    - BUILD_TYPE=default
-    - BUILD_TYPE=android
-    - BUILD_TYPE=default-Werror
-    - BUILD_TYPE=cmake
+#    - BUILD_TYPE=default
+#    - BUILD_TYPE=android
+#    - BUILD_TYPE=default-Werror
+#    - BUILD_TYPE=cmake
     - BUILD_TYPE=check_zproject
     - BUILD_TYPE=bindings BINDING=jni
 #   - BUILD_TYPE=check-py
